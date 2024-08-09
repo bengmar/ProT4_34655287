@@ -14,7 +14,8 @@
   "dependencies": {
     "express": "^4.19.2",
     "morgan": "^1.10.0",
-    "mysql2": "^3.11.0"
+    "mysql2": "^3.11.0",
+    "prot4_34655287": "file:"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
