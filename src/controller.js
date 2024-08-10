@@ -1,7 +1,6 @@
 import { pool } from "./database.js";
 
 class LibroController {
-
   //Mostrar todos los libros
   async getAll(req, res) {
     const [result] = await pool.query("SELECT * FROM Libros");
@@ -29,12 +28,8 @@ class LibroController {
           error: "No se ha encontrado un libro que posea el id ingresado.",
         });
       } else {
-        res
-        .status(200)
-        .json(result);
+        res.status(200).json(result);
       }
-
-      
     } catch (error) {
       //En caso de que la consulta a la BD sea erronea
       console.error("Error al obtener recurso:", error);
@@ -81,7 +76,10 @@ class LibroController {
       if (result.affectedRows == 0) {
         res.json
           .status(404)
-          .json({ error: "Recurso a eliminar con el ISBN proporcionado no encontrado." });
+          .json({
+            error:
+              "Recurso a eliminar con el ISBN proporcionado no encontrado.",
+          });
       } else {
         res.json({
           "Registro con el ISBN elegido eliminado": result.affectedRows,
@@ -94,24 +92,37 @@ class LibroController {
     }
   }
 
-  //Actualizar un libro mediante el envio de los datos en el body de la solicitud
+  //Actualizar un libro mediante el envio de los datos en el body de la solicitud. EL ISBN debe ser de un libro almacenado para poder editar
   async update(req, res) {
     try {
       const libro = req.body;
       const [result] = await pool.query(
-        `UPDATE Libros SET nombre=(?), autor=(?), categoria=(?), anio_publicacion=(?), ISBN=(?) WHERE id=(?)`,
+        `UPDATE Libros SET nombre=(?), autor=(?), categoria=(?), anio_publicacion=(?) WHERE ISBN=(?)`,
         [
           libro.nombre,
           libro.autor,
           libro.categoria,
           libro.anio_publicacion,
           libro.ISBN,
-          libro.id,
         ]
       );
-      res.json({ "Registros actualizados": result.changedRows });
+
+      if (result.changedRows == 0) {
+        console.error(
+          "No se ha encontrado el recurso que desea actualizar:",
+          error
+        );
+        res
+          .status(404)
+          .json({ error: "No se encuentra el recurso que desea actualizar." });
+      } else {
+        res.json({ "Registros actualizados": result.changedRows });
+      }
     } catch (error) {
-      console.error("Error en la actualización del recurso:", error);
+      console.error(
+        "Error en la actualización del recurso. ISBN no encontrado:",
+        error
+      );
       res.status(500).json({ error: "Error interno del servidor." });
     }
   }
