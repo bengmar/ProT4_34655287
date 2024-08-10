@@ -38,7 +38,7 @@ La base de datos se proporciona en la carpeta script del proyecto.
 
 | Parámetro | Tipo     | Descripción                       |
 | :-------- | :------- | :-------------------------------- |
-| req body      | libro | **Requerido**. Enviar en el cuerpo de la petición los parámetros del libro a agregar
+| req body      | libro | **Requerido**. Enviar en el cuerpo de la petición los parámetros del libro a agregar |
 
 #### Borrar libro
 
