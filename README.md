@@ -23,7 +23,7 @@ La base de datos se proporciona en la carpeta script del proyecto.
 #### Obtener libro
 
 ```http
-  GET /libro/${id}
+  GET /libros/${id}
 ```
 
 | Parámetro | Tipo     | Descripción                       |
@@ -33,7 +33,7 @@ La base de datos se proporciona en la carpeta script del proyecto.
 #### Agregar libro
 
 ```http
-  POST /insertar
+  POST /libros/insertar
 ```
 
 | Parámetro | Tipo     | Descripción                       |
@@ -43,7 +43,7 @@ La base de datos se proporciona en la carpeta script del proyecto.
 #### Borrar libro
 
 ```http
-  DELETE /eliminar/${isbn}
+  DELETE /libros/eliminar/${isbn}
 ```
 
 | Parámetro | Tipo     | Descripción                       |
@@ -54,7 +54,7 @@ La base de datos se proporciona en la carpeta script del proyecto.
 #### Editar Libro
 
 ```http
-  PUT /editar
+  PUT /libros/editar
 ```
 
 | Parámetro | Tipo     | Descripción                       |
