@@ -8,9 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marcelo Bengochea",
   "license": "ISC",
-  "description": "",
+  "description": "API para consulta de bibliografia disponible en BD",
   "dependencies": {
     "express": "^4.19.2",
     "morgan": "^1.10.0",
